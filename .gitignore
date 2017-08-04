@@ -29,6 +29,7 @@ StyleCop.xml
 Unit Tests.VisualState.xml
 StyleCop.Cache
 *.sln.docstates
+**packages/*
 ^packages/.*/src/
 *.sln.DotSettings
 Installers/*Files.wxs
@@ -37,3 +38,4 @@ Installers/*Files.wxs
 *.tmp
 *.psess
 *.vspx
+/packages
