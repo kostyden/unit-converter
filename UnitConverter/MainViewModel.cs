@@ -26,7 +26,7 @@
         public void ConvertWith(IUnitConverter converter, string values)
         {
             var rawValues = _formatter.ToCollection(values);
-            var originalValues = rawValues.Select(value => double.Parse(value, CultureInfo.InvariantCulture));
+            var originalValues = rawValues.Select(value => double.TryParse(value, NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out double parsed) ? parsed : double.NaN);
             var convertedValues = originalValues.Select(value => converter.Convert(value));
             var resulValues = convertedValues.Select(value => value.ToString(CultureInfo.InvariantCulture));
             Result = _formatter.ToText(resulValues.ToList());
