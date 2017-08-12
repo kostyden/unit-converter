@@ -158,6 +158,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 544);
             this.Controls.Add(this.tlpMain);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainForm";
             this.Text = "WindowTitle";
             this.tlpMain.ResumeLayout(false);
