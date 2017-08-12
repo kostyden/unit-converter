@@ -1,15 +1,11 @@
 ﻿namespace UnitConverter.Converters
 {
-    public class InchesToCentimetersConverter : IUnitConverter
+    public class InchesToCentimetersConverter : BaseConverter
     {
-        public string Name { get; }
+        public InchesToCentimetersConverter(string name) : base(name)
+        { }
 
-        public InchesToCentimetersConverter(string name)
-        {
-            Name = name;
-        }
-
-        public double Convert(double value)
+        public override double Convert(double value)
         {
             return value * 2.54;
         }

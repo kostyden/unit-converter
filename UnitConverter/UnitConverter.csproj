@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\BaseConverter.cs" />
     <Compile Include="Converters\InchesToCentimetersConverter.cs" />
     <Compile Include="IFormatter.cs" />
     <Compile Include="IUnitConverter.cs" />
