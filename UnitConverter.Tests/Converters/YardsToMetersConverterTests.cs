@@ -2,7 +2,6 @@
 {
     using FluentAssertions;
     using NUnit.Framework;
-    using System;
     using UnitConverter.Converters;
 
     [TestFixture]
@@ -17,7 +16,7 @@
         [TestCase(100, 91.44)]
         [TestCase(15.5, 14.1732)]
         [TestCase(99.636, 91.1071584)]
-        [TestCase(1.12, 1.024128)]
+        [TestCase(-1.12, -1.024128)]
         [TestCase(3.1415, 2.8725876)]
         public void Convert_ShouldReturnExpectedResult(double yards, double expectedMeters)
         {
