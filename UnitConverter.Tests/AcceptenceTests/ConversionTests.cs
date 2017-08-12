@@ -18,6 +18,7 @@
         [TestCase(new[] { "0", "1", "12", "42" }, new[] { "0", "0.9144", "10.9728", "38.4048" })]
         [TestCase(new[] { "10" }, new[] { "9.144" })]
         [TestCase(new[] { "150", "1200", "12.1245" }, new[] { "137.16", "1097.28", "11.0866428" })]
+        [TestCase(new[] { "201", "1,45d", "forty-two" }, new[] { "183.7944", "NaN", "NaN" })]
         public void YardsToMetersShouldPrintExpectedResult(string[] input, string[] result)
         {
             var converterTitle = "Yards to Meters";
@@ -43,6 +44,7 @@
         [TestCase(new[] { "4" }, new[] { "10.16" })]
         [TestCase(new[] { "0", "24", "28", "42" }, new[] { "0", "60.96", "71.12", "106.68" })]
         [TestCase(new[] { "100", "3.3333333" }, new[] { "254", "8.466666582" })]
+        [TestCase(new[] { "45.789", "zero", "0.0" }, new[] { "116.30406", "NaN", "0" })]
         public void InchesInCentimetersShouldPrintExpectedResult(string[] input, string[] result)
         {
             var converterTitle = "Inches To Centimeters";
