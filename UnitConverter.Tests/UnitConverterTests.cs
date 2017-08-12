@@ -12,7 +12,7 @@
 		[TestCase("17.96", "16.422624")]
 		public void YardsToMeters_GivenSingleValue_ReturnsCorrectString(string input, string expected)
 		{
-			var converter = new UnitConverter();
+			var converter = new UnitConverter1();
             
 			Assert.That(converter.YardsToMeters(input).Single(), Is.EqualTo(expected));
 		}
@@ -24,7 +24,7 @@
 			input = input.Replace(";", "\n");
 			var expectedArray = expected.Split(';');
 
-			var converter = new UnitConverter();
+			var converter = new UnitConverter1();
 
 			Assert.That(converter.YardsToMeters(input), Is.EqualTo(expectedArray));
 		}
@@ -34,7 +34,7 @@
 		[TestCase("87", "220.98")]
 		public void InchesToCentimeters_GivenSingleValue_ReturnsCorrectString(string input, string expected)
 		{
-			var converter = new UnitConverter();
+			var converter = new UnitConverter1();
 
 			Assert.That(converter.InchesToCentimeters(input).Single(), Is.EqualTo(expected));
 		}
@@ -46,7 +46,7 @@
 			input = input.Replace(";", "\n");
 			var expectedArray = expected.Split(';');
 
-			var converter = new UnitConverter();
+			var converter = new UnitConverter1();
 
 			Assert.That(converter.InchesToCentimeters(input), Is.EqualTo(expectedArray));
 		}

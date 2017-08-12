@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace UnitConverter
 {
-	public class UnitConverter
+	public class UnitConverter1
 	{
 		public string[] YardsToMeters(string yards)
 		{
