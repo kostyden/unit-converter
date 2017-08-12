@@ -14,17 +14,22 @@ namespace UnitConverter
         [STAThread]
         static void Main()
         {
+            var mainViewModel = CreateMainViewModelWithDependencies();
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm(mainViewModel));
+        }
+
+        static MainViewModel CreateMainViewModelWithDependencies()
+        {
             var converters = new IUnitConverter[]
             {
                 new YardsToMetersConverter("Yards to Meters"),
                 new InchesToCentimetersConverter("Inches To Centimeters")
             };
             var formatter = new TextFormatter();
-            var mainViewModel = new MainViewModel(formatter, converters);
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(mainViewModel));
+            return new MainViewModel(formatter, converters);
         }
     }
 }
