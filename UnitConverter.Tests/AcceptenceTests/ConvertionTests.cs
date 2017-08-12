@@ -13,7 +13,7 @@
 
     [TestFixture]
     [Category("Acceptence tests")]
-    class ConversionTests
+    class ConvertionTests
     {
         [Test]
         [TestCase(new[] { "0", "1", "12", "42" }, new[] { "0", "0.9144", "10.9728", "38.4048" })]
@@ -22,22 +22,7 @@
         [TestCase(new[] { "201", "1,45d", "forty-two" }, new[] { "183.7944", "NaN", "NaN" })]
         public void YardsToMetersShouldPrintExpectedResult(string[] input, string[] result)
         {
-            var givenInput = string.Join(Environment.NewLine, input);
-            var expectedResult = result.ToMultilineText();
-
-            using (var application = UITests.LaunchApplication())
-            {
-                var window = application.GetWindow(ControlTexts.WindowTitle, InitializeOption.NoCache);
-
-                var inputBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_INPUT));
-                var resultBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_RESULT));
-                var conversionCell = GetConversionCellButtonByText(window, ConverterNames.YardsToMeters);
-
-                inputBox.Text = givenInput;
-                conversionCell.Click();
-
-                resultBox.Text.Should().Be(expectedResult);
-            }
+            AssertThatConvertionPrintExpectedResults(input, result, ConverterNames.YardsToMeters);
         }
 
         [Test]
@@ -47,22 +32,7 @@
         [TestCase(new[] { "45.789", "zero", "0.0" }, new[] { "116.30406", "NaN", "0" })]
         public void InchesInCentimetersShouldPrintExpectedResult(string[] input, string[] result)
         {
-            var givenInput = string.Join(Environment.NewLine, input);
-            var expectedResult = result.ToMultilineText();
-
-            using (var application = UITests.LaunchApplication())
-            {
-                var window = application.GetWindow(ControlTexts.WindowTitle, InitializeOption.NoCache);
-
-                var inputBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_INPUT));
-                var resultBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_RESULT));
-                var conversionCell = GetConversionCellButtonByText(window, ConverterNames.InchesToCentimeters);
-
-                inputBox.Text = givenInput;
-                conversionCell.Click();
-
-                resultBox.Text.Should().Be(expectedResult);
-            }
+            AssertThatConvertionPrintExpectedResults(input, result, ConverterNames.InchesToCentimeters);
         }
 
         [Test]
@@ -71,6 +41,11 @@
         [TestCase(new[] { "100", "0.621371192237334" }, new[] { "160.9344", "1" })]
         [TestCase(new[] { "empty" }, new[] { "NaN" })]
         public void MilesToKilometersShouldPrintExpectedResult(string[] input, string[] result)
+        {
+            AssertThatConvertionPrintExpectedResults(input, result, ConverterNames.MilesToKilometers);
+        }
+
+        private void AssertThatConvertionPrintExpectedResults(string[] input, string[] result, string converterName)
         {
             var givenInput = string.Join(Environment.NewLine, input);
             var expectedResult = result.ToMultilineText();
@@ -81,7 +56,7 @@
 
                 var inputBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_INPUT));
                 var resultBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_RESULT));
-                var conversionCell = GetConversionCellButtonByText(window, ConverterNames.MilesToKilometers);
+                var conversionCell = GetConversionCellButtonByText(window, converterName);
 
                 inputBox.Text = givenInput;
                 conversionCell.Click();

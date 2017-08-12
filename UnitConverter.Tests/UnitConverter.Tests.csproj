@@ -85,7 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcceptenceTests\ControlNames.cs" />
-    <Compile Include="AcceptenceTests\ConversionTests.cs" />
+    <Compile Include="AcceptenceTests\ConvertionTests.cs" />
     <Compile Include="AcceptenceTests\OnStartupShouldDisplay.cs" />
     <Compile Include="AcceptenceTests\UITests.cs" />
     <Compile Include="Converters\InchesToCentimetersConverterTests.cs" />
