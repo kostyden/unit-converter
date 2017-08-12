@@ -59,7 +59,8 @@
             var expectedButtonsText = new[]
             {
                 "Yards to Meters",
-                "Inches To Centimeters"
+                "Inches to Centimeters",
+                "Miles to Kilometers"
             };
             var gridView = Window.Get<Table>(SearchCriteria.ByAutomationId(ControlNames.DATAGRIDVIEW_CONVERTERS));
             var actualButtonsText = gridView.Rows.Select(row => row.Cells[0]).Select(cell => cell.Value);

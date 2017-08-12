@@ -47,7 +47,33 @@
         [TestCase(new[] { "45.789", "zero", "0.0" }, new[] { "116.30406", "NaN", "0" })]
         public void InchesInCentimetersShouldPrintExpectedResult(string[] input, string[] result)
         {
-            var converterTitle = "Inches To Centimeters";
+            var converterTitle = "Inches to Centimeters";
+            var givenInput = string.Join(Environment.NewLine, input);
+            var expectedResult = result.ToMultilineText();
+
+            using (var application = UITests.LaunchApplication())
+            {
+                var window = application.GetWindow(ControlNames.WINDOW_TITLE, InitializeOption.NoCache);
+
+                var inputBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_INPUT));
+                var resultBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_RESULT));
+                var conversionCell = GetConversionCellButtonByText(window, converterTitle);
+
+                inputBox.Text = givenInput;
+                conversionCell.Click();
+
+                resultBox.Text.Should().Be(expectedResult);
+            }
+        }
+
+        [Test]
+        [TestCase(new[] { "4" }, new[] { "6.437376" })]
+        [TestCase(new[] { "0", "7", "2.5", "10" }, new[] { "0", "11.265408", "4.02336", "16.09344" })]
+        [TestCase(new[] { "100", "0.621371" }, new[] { "160.9344", "1" })]
+        [TestCase(new[] { "empty" }, new[] { "NaN" })]
+        public void MilesToKilometersShouldPrintExpectedResult(string[] input, string[] result)
+        {
+            var converterTitle = "Miles to Kilometers";
             var givenInput = string.Join(Environment.NewLine, input);
             var expectedResult = result.ToMultilineText();
 

@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Converters\BaseConverter.cs" />
     <Compile Include="Converters\InchesToCentimetersConverter.cs" />
+    <Compile Include="Converters\MilesToKilometersConverter.cs" />
     <Compile Include="IFormatter.cs" />
     <Compile Include="IUnitConverter.cs" />
     <Compile Include="MainForm.cs">

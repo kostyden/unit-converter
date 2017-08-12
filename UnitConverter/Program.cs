@@ -26,7 +26,7 @@ namespace UnitConverter
             var converters = new IUnitConverter[]
             {
                 new YardsToMetersConverter("Yards to Meters"),
-                new InchesToCentimetersConverter("Inches To Centimeters")
+                new InchesToCentimetersConverter("Inches to Centimeters")
             };
             var formatter = new TextFormatter();
             return new MainViewModel(formatter, converters);

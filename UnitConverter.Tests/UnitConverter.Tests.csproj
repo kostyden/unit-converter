@@ -89,6 +89,7 @@
     <Compile Include="AcceptenceTests\OnStartupShouldDisplay.cs" />
     <Compile Include="AcceptenceTests\UITests.cs" />
     <Compile Include="Converters\InchesToCentimetersConverterTests.cs" />
+    <Compile Include="Converters\MilesToKilometersConverterTests.cs" />
     <Compile Include="MainViewModelTests\ConvertWithShould.cs" />
     <Compile Include="MainViewModelTests\GeneralTests.cs" />
     <Compile Include="MainViewModelTests\MainViewModelTestsBase.cs" />
