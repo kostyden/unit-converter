@@ -1,17 +1,14 @@
 ﻿namespace UnitConverter.Tests
 {
+    using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.Linq;
-    using System.Text;
 
     public static class TestExtensions
     {
         public static string ToMultilineText(this IEnumerable<string> values)
         {
-            return values.Aggregate(new StringBuilder(),
-                                    (builder, value) => builder.AppendLine(value),
-                                    builder => builder.ToString());
+            return string.Join(Environment.NewLine, values);
         }
 
         public static double ToDouble(this string value)

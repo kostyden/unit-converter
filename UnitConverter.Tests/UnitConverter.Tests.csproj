@@ -92,6 +92,7 @@
     <Compile Include="MainViewModelTests\GeneralTests.cs" />
     <Compile Include="MainViewModelTests\MainViewModelTestsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextFormatterTests.cs" />
     <Compile Include="TestExtensions.cs" />
     <Compile Include="UnitConverterTests.cs" />
   </ItemGroup>
