@@ -6,6 +6,7 @@
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
+    using System;
 
     [TestFixture]
     class MainViewModelTests
@@ -18,7 +19,32 @@
         public void SetUp()
         {
             _fakeFormatter = Substitute.For<IFormatter>();
-            _viewmodel = new MainViewModel(_fakeFormatter);
+            _viewmodel = new MainViewModel(_fakeFormatter, Enumerable.Empty<IUnitConverter>());
+        }
+
+        [Test]
+        [TestCaseSource(nameof(GetTestCasesForConverters))]
+        public void Converters_ShouldReturnCollectionGivenDuringConstruction(IUnitConverter[] converters)
+        {
+            var viewmodel = new MainViewModel(_fakeFormatter, converters);
+            viewmodel.Converters.ShouldBeEquivalentTo(converters);
+        }
+
+        private static IEnumerable<TestCaseData> GetTestCasesForConverters()
+        {
+            var threeConverters = (object)new IUnitConverter[] { new FirstConverter(), new SecondConverter(), new ThirdConverter() };
+            yield return new TestCaseData(threeConverters);
+
+            var twoConverters = (object)new IUnitConverter[] { new SecondConverter(), new ThirdConverter(), new FourthConverter() };
+            yield return new TestCaseData(
+                (object)new IUnitConverter[]
+                {
+                    new FirstConverter(),
+                    new ThirdConverter(),
+                });
+
+            var noConverters = Enumerable.Empty<IUnitConverter>();
+            yield return new TestCaseData(noConverters);
         }
 
         [Test]
@@ -90,6 +116,22 @@
             }
 
             return converter;
+        }
+
+        private class FirstConverter : BaseConverter { }
+
+        private class SecondConverter : BaseConverter { }
+
+        private class ThirdConverter : BaseConverter { }
+
+        private class FourthConverter : BaseConverter { }
+
+        private abstract class BaseConverter : IUnitConverter
+        {
+            public double Convert(double value)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
