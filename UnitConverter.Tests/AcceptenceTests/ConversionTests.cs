@@ -23,9 +23,7 @@
         {
             var converterTitle = "Yards to Meters";
             var givenInput = string.Join(Environment.NewLine, input);
-            var expectedResult = result.Aggregate(new StringBuilder(),
-                                                  (builder, value) => builder.AppendLine(value),
-                                                  builder => builder.ToString());
+            var expectedResult = result.ToMultilineText();
 
             using (var application = UITests.LaunchApplication())
             {
@@ -35,7 +33,7 @@
                 var resultBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_RESULT));
                 var conversionCell = GetConversionCellButtonByText(window, converterTitle);
 
-                inputBox.BulkText = givenInput;
+                inputBox.Text = givenInput;
                 conversionCell.Click();
 
                 resultBox.Text.Should().Be(expectedResult);
@@ -50,9 +48,7 @@
         {
             var converterTitle = "Inches To Centimeters";
             var givenInput = string.Join(Environment.NewLine, input);
-            var expectedResult = result.Aggregate(new StringBuilder(),
-                                                  (builder, value) => builder.AppendLine(value),
-                                                  builder => builder.ToString());
+            var expectedResult = result.ToMultilineText();
 
             using (var application = UITests.LaunchApplication())
             {
@@ -62,7 +58,7 @@
                 var resultBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_RESULT));
                 var conversionCell = GetConversionCellButtonByText(window, converterTitle);
 
-                inputBox.BulkText = givenInput;
+                inputBox.Text = givenInput;
                 conversionCell.Click();
 
                 resultBox.Text.Should().Be(expectedResult);
