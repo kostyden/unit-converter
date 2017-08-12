@@ -1,12 +1,8 @@
 ﻿namespace UnitConverter.Tests.MainViewModelTests
 {
-    using FluentAssertions;
     using NSubstitute;
     using NUnit.Framework;
-    using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
-    using System;
 
     class MainViewModelTestsBase
     {

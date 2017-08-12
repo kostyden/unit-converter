@@ -17,7 +17,6 @@
         public void ExpectedMainTitle()
         {
             var label = Window.Get<Label>(SearchCriteria.ByAutomationId(ControlNames.LABEL_MAIN_TITLE));
-
             label.Text.Should().Be(ControlTexts.MainTitle);
         }
 
@@ -25,7 +24,6 @@
         public void ExpectedInputTitle()
         {
             var label = Window.Get<Label>(SearchCriteria.ByAutomationId(ControlNames.LABEL_INPUT_TITLE));
-
             label.Text.Should().Be(ControlTexts.InputTitle);
         }
 
@@ -33,7 +31,6 @@
         public void ExpectedResultTitle()
         {
             var label = Window.Get<Label>(SearchCriteria.ByAutomationId(ControlNames.LABEL_RESULT_TITLE));
-
             label.Text.Should().Be(ControlTexts.ResultTitle);
         }
 

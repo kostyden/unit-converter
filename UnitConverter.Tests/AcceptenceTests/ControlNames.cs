@@ -1,7 +1,5 @@
 ﻿namespace UnitConverter.Tests.AcceptenceTests
 {
-    using System;
-
     static class ControlNames
     {
         public const string LABEL_MAIN_TITLE = "lblMainTitle";
