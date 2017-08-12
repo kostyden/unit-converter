@@ -96,7 +96,6 @@
     <Compile Include="TextFormatterTests.cs" />
     <Compile Include="TestExtensions.cs" />
     <Compile Include="Converters\YardsToMetersConverterTests.cs" />
-    <Compile Include="UnitConverterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UnitConverter\UnitConverter.csproj">
