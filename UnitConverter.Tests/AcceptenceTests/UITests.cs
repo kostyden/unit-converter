@@ -7,6 +7,7 @@
     using TestStack.White;
     using TestStack.White.Factory;
     using TestStack.White.UIItems.WindowItems;
+    using UnitConverter.Resources;
 
     public abstract class UITests
     {
@@ -25,7 +26,7 @@
         public void OneTimeSetUpBase()
         {
             Application = LaunchApplication();
-            Window = Application.GetWindow(ControlNames.WINDOW_TITLE, InitializeOption.NoCache);
+            Window = Application.GetWindow(ControlTexts.WindowTitle, InitializeOption.NoCache);
         }
 
         [OneTimeTearDown]

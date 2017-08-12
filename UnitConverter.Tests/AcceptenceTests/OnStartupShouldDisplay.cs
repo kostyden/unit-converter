@@ -7,6 +7,7 @@
     using TestStack.White.UIItems.Finders;
     using TestStack.White.UIItems.TableItems;
     using TestStack.White.UIItems.WindowItems;
+    using UnitConverter.Resources;
 
     [TestFixture]
     [Category("Acceptence tests")]
@@ -15,28 +16,25 @@
         [Test]
         public void ExpectedMainTitle()
         {
-            var expected = "Convert values from input box, seperated by a new line, from one unit to another";
             var label = Window.Get<Label>(SearchCriteria.ByAutomationId(ControlNames.LABEL_MAIN_TITLE));
 
-            label.Text.Should().Be(expected);
+            label.Text.Should().Be(ControlTexts.MainTitle);
         }
 
         [Test]
         public void ExpectedInputTitle()
         {
-            var expected = "Input";
             var label = Window.Get<Label>(SearchCriteria.ByAutomationId(ControlNames.LABEL_INPUT_TITLE));
 
-            label.Text.Should().Be(expected);
+            label.Text.Should().Be(ControlTexts.InputTitle);
         }
 
         [Test]
         public void ExpectedResultTitle()
         {
-            var expected = "Result";
             var label = Window.Get<Label>(SearchCriteria.ByAutomationId(ControlNames.LABEL_RESULT_TITLE));
 
-            label.Text.Should().Be(expected);
+            label.Text.Should().Be(ControlTexts.ResultTitle);
         }
 
         [Test]
@@ -58,9 +56,9 @@
         {
             var expectedButtonsText = new[]
             {
-                "Yards to Meters",
-                "Inches to Centimeters",
-                "Miles to Kilometers"
+                ConverterNames.YardsToMeters,
+                ConverterNames.InchesToCentimeters,
+                ConverterNames.MilesToKilometers
             };
             var gridView = Window.Get<Table>(SearchCriteria.ByAutomationId(ControlNames.DATAGRIDVIEW_CONVERTERS));
             var actualButtonsText = gridView.Rows.Select(row => row.Cells[0]).Select(cell => cell.Value);

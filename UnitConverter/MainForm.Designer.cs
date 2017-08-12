@@ -87,36 +87,36 @@
             this.lblMainTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMainTitle.AutoSize = true;
             this.tlpMain.SetColumnSpan(this.lblMainTitle, 3);
-            this.lblMainTitle.Location = new System.Drawing.Point(104, 24);
+            this.lblMainTitle.Location = new System.Drawing.Point(353, 24);
             this.lblMainTitle.Margin = new System.Windows.Forms.Padding(3, 24, 3, 24);
             this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.Size = new System.Drawing.Size(569, 20);
+            this.lblMainTitle.Size = new System.Drawing.Size(72, 20);
             this.lblMainTitle.TabIndex = 1;
-            this.lblMainTitle.Text = "Convert values from input box, seperated by a new line, from one unit to another";
+            this.lblMainTitle.Text = "MainTitle";
             this.lblMainTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblInputTitle
             // 
             this.lblInputTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblInputTitle.AutoSize = true;
-            this.lblInputTitle.Location = new System.Drawing.Point(111, 80);
+            this.lblInputTitle.Location = new System.Drawing.Point(97, 80);
             this.lblInputTitle.Margin = new System.Windows.Forms.Padding(3, 12, 3, 6);
             this.lblInputTitle.Name = "lblInputTitle";
-            this.lblInputTitle.Size = new System.Drawing.Size(46, 20);
+            this.lblInputTitle.Size = new System.Drawing.Size(75, 20);
             this.lblInputTitle.TabIndex = 2;
-            this.lblInputTitle.Text = "Input";
+            this.lblInputTitle.Text = "InputTitle";
             this.lblInputTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblResultTitle
             // 
             this.lblResultTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblResultTitle.AutoSize = true;
-            this.lblResultTitle.Location = new System.Drawing.Point(616, 80);
+            this.lblResultTitle.Location = new System.Drawing.Point(601, 80);
             this.lblResultTitle.Margin = new System.Windows.Forms.Padding(3, 12, 3, 6);
             this.lblResultTitle.Name = "lblResultTitle";
-            this.lblResultTitle.Size = new System.Drawing.Size(55, 20);
+            this.lblResultTitle.Size = new System.Drawing.Size(84, 20);
             this.lblResultTitle.TabIndex = 2;
-            this.lblResultTitle.Text = "Result";
+            this.lblResultTitle.Text = "ResultTitle";
             this.lblResultTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dgvConverters
@@ -152,14 +152,14 @@
             this.dgvConvertersConvertColumn.Name = "dgvConvertersConvertColumn";
             this.dgvConvertersConvertColumn.ReadOnly = true;
             // 
-            // MainView
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 544);
             this.Controls.Add(this.tlpMain);
-            this.Name = "MainView";
-            this.Text = "Unit converter";
+            this.Name = "MainForm";
+            this.Text = "WindowTitle";
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConverters)).EndInit();

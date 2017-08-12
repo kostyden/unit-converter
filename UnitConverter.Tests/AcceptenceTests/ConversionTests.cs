@@ -9,6 +9,7 @@
     using TestStack.White.UIItems.Finders;
     using TestStack.White.UIItems.TableItems;
     using TestStack.White.UIItems.WindowItems;
+    using UnitConverter.Resources;
 
     [TestFixture]
     [Category("Acceptence tests")]
@@ -21,17 +22,16 @@
         [TestCase(new[] { "201", "1,45d", "forty-two" }, new[] { "183.7944", "NaN", "NaN" })]
         public void YardsToMetersShouldPrintExpectedResult(string[] input, string[] result)
         {
-            var converterTitle = "Yards to Meters";
             var givenInput = string.Join(Environment.NewLine, input);
             var expectedResult = result.ToMultilineText();
 
             using (var application = UITests.LaunchApplication())
             {
-                var window = application.GetWindow(ControlNames.WINDOW_TITLE, InitializeOption.NoCache);
+                var window = application.GetWindow(ControlTexts.WindowTitle, InitializeOption.NoCache);
 
                 var inputBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_INPUT));
                 var resultBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_RESULT));
-                var conversionCell = GetConversionCellButtonByText(window, converterTitle);
+                var conversionCell = GetConversionCellButtonByText(window, ConverterNames.YardsToMeters);
 
                 inputBox.Text = givenInput;
                 conversionCell.Click();
@@ -47,17 +47,16 @@
         [TestCase(new[] { "45.789", "zero", "0.0" }, new[] { "116.30406", "NaN", "0" })]
         public void InchesInCentimetersShouldPrintExpectedResult(string[] input, string[] result)
         {
-            var converterTitle = "Inches to Centimeters";
             var givenInput = string.Join(Environment.NewLine, input);
             var expectedResult = result.ToMultilineText();
 
             using (var application = UITests.LaunchApplication())
             {
-                var window = application.GetWindow(ControlNames.WINDOW_TITLE, InitializeOption.NoCache);
+                var window = application.GetWindow(ControlTexts.WindowTitle, InitializeOption.NoCache);
 
                 var inputBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_INPUT));
                 var resultBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_RESULT));
-                var conversionCell = GetConversionCellButtonByText(window, converterTitle);
+                var conversionCell = GetConversionCellButtonByText(window, ConverterNames.InchesToCentimeters);
 
                 inputBox.Text = givenInput;
                 conversionCell.Click();
@@ -69,21 +68,20 @@
         [Test]
         [TestCase(new[] { "4" }, new[] { "6.437376" })]
         [TestCase(new[] { "0", "7", "2.5", "10" }, new[] { "0", "11.265408", "4.02336", "16.09344" })]
-        [TestCase(new[] { "100", "0.621371" }, new[] { "160.9344", "1" })]
+        [TestCase(new[] { "100", "0.621371192237334" }, new[] { "160.9344", "1" })]
         [TestCase(new[] { "empty" }, new[] { "NaN" })]
         public void MilesToKilometersShouldPrintExpectedResult(string[] input, string[] result)
         {
-            var converterTitle = "Miles to Kilometers";
             var givenInput = string.Join(Environment.NewLine, input);
             var expectedResult = result.ToMultilineText();
 
             using (var application = UITests.LaunchApplication())
             {
-                var window = application.GetWindow(ControlNames.WINDOW_TITLE, InitializeOption.NoCache);
+                var window = application.GetWindow(ControlTexts.WindowTitle, InitializeOption.NoCache);
 
                 var inputBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_INPUT));
                 var resultBox = window.Get<TextBox>(SearchCriteria.ByAutomationId(ControlNames.TEXTBOX_RESULT));
-                var conversionCell = GetConversionCellButtonByText(window, converterTitle);
+                var conversionCell = GetConversionCellButtonByText(window, ConverterNames.MilesToKilometers);
 
                 inputBox.Text = givenInput;
                 conversionCell.Click();

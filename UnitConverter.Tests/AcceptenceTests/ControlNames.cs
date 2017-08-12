@@ -4,8 +4,6 @@
 
     static class ControlNames
     {
-        public const string WINDOW_TITLE = "Unit converter";
-
         public const string LABEL_MAIN_TITLE = "lblMainTitle";
 
         public const string LABEL_INPUT_TITLE = "lblInputTitle";

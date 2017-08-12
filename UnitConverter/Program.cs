@@ -4,6 +4,7 @@ namespace UnitConverter
     using System;
     using System.Windows.Forms;
     using UnitConverter.Converters;
+    using UnitConverter.Resources;
 
     static class Program
     {
@@ -25,8 +26,9 @@ namespace UnitConverter
         {
             var converters = new IUnitConverter[]
             {
-                new YardsToMetersConverter("Yards to Meters"),
-                new InchesToCentimetersConverter("Inches to Centimeters")
+                new YardsToMetersConverter(ConverterNames.YardsToMeters),
+                new InchesToCentimetersConverter(ConverterNames.InchesToCentimeters),
+                new MilesToKilometersConverter(ConverterNames.MilesToKilometers)
             };
             var formatter = new TextFormatter();
             return new MainViewModel(formatter, converters);
