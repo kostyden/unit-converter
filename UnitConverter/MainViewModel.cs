@@ -15,7 +15,21 @@
 
         public IReadOnlyCollection<IUnitConverter> Converters { get; }
 
-        public string Result { get; set; }
+        private string _result;
+
+        public string Result
+        {
+            get
+            {
+                return _result;
+            }
+
+            private set
+            {
+                _result = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public MainViewModel(IFormatter formatter, IEnumerable<IUnitConverter> converters)
         {
@@ -24,13 +38,29 @@
         }
 
         public void ConvertWith(IUnitConverter converter, string values)
+        {            
+            var converted = _formatter.ToCollection(values)
+                                      .Select(ParseToDouble)
+                                      .Select(converter.Convert)
+                                      .Select(ConvertToString);
+
+            Result = _formatter.ToText(converted);
+        }
+
+        private double ParseToDouble(string value)
         {
-            var rawValues = _formatter.ToCollection(values);
-            var originalValues = rawValues.Select(value => double.TryParse(value, NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out double parsed) ? parsed : double.NaN);
-            var convertedValues = originalValues.Select(value => converter.Convert(value));
-            var resulValues = convertedValues.Select(value => value.ToString(CultureInfo.InvariantCulture));
-            Result = _formatter.ToText(resulValues.ToList());
-            RaisePropertyChanged(nameof(Result));
+            var allowedStyles = NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint;
+            if (double.TryParse(value, allowedStyles, CultureInfo.InvariantCulture, out double parsed))
+            {
+                return parsed;
+            }
+
+            return double.NaN;
+        }
+
+        private string ConvertToString(double value)
+        {
+            return value.ToString(CultureInfo.InvariantCulture);
         }
 
         private void RaisePropertyChanged([CallerMemberName] string propertyName = null)

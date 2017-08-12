@@ -1,7 +1,5 @@
 ﻿namespace UnitConverter.Converters
 {
-    using System;
-
     public abstract class BaseConverter : IUnitConverter
     {
         public string Name { get; }

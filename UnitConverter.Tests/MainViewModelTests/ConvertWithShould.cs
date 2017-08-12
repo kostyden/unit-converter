@@ -39,6 +39,8 @@
             var inputValue = inputValues.ToMultilineText();
 
             FakeFormatter.ToCollection(inputValue).ReturnsForAnyArgs(inputValues);
+            FakeFormatter.ToText(null).ReturnsForAnyArgs(config => config.Arg<IEnumerable<string>>().ToList().ToString());
+
             var converter = Substitute.For<IUnitConverter>();
             converter.Convert(Arg.Do<double>(value => actualInput.Add(value))).ReturnsForAnyArgs(dummyResult);
 
