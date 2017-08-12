@@ -88,7 +88,9 @@
     <Compile Include="AcceptenceTests\ConversionTests.cs" />
     <Compile Include="AcceptenceTests\OnStartupShouldDisplay.cs" />
     <Compile Include="AcceptenceTests\UITests.cs" />
-    <Compile Include="MainViewModelTests.cs" />
+    <Compile Include="MainViewModelTests\ConvertWithShould.cs" />
+    <Compile Include="MainViewModelTests\GeneralTests.cs" />
+    <Compile Include="MainViewModelTests\MainViewModelTestsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestExtensions.cs" />
     <Compile Include="UnitConverterTests.cs" />

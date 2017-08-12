@@ -2,12 +2,16 @@
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.ComponentModel;
     using System.Globalization;
     using System.Linq;
+    using System.Runtime.CompilerServices;
 
-    public class MainViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
         private readonly IFormatter _formatter;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public IReadOnlyCollection<IUnitConverter> Converters { get; }
 
@@ -26,6 +30,12 @@
             var convertedValues = originalValues.Select(value => converter.Convert(value));
             var resulValues = convertedValues.Select(value => value.ToString(CultureInfo.InvariantCulture));
             Result = _formatter.ToText(resulValues.ToList());
+            RaisePropertyChanged(nameof(Result));
+        }
+
+        private void RaisePropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
