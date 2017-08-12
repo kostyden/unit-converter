@@ -4,7 +4,6 @@
     using NUnit.Framework;
     using System;
     using System.Linq;
-    using System.Text;
     using TestStack.White.Factory;
     using TestStack.White.UIItems;
     using TestStack.White.UIItems.Finders;

@@ -44,6 +44,8 @@
 
         private abstract class BaseConverter : IUnitConverter
         {
+            public string Name => throw new NotImplementedException();
+
             public double Convert(double value)
             {
                 throw new NotImplementedException();
