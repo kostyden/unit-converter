@@ -31,12 +31,7 @@
 
             _fakeFormatter.ToCollection(rawInput).Returns(inputValues);
             _fakeFormatter.ToText(null).ReturnsForAnyArgs(expectedValue);
-            var converter = Substitute.For<IUnitConverter>();
-            for(var i = 0; i < inputValues.Length; i++)
-            {
-                converter.Convert(inputValues[i].ToDouble()).Returns(result[i]);
-            }
-
+            var converter = ConfigureConverterFor(inputValues, result);
 
             _viewmodel.ConvertWith(converter, rawInput);
 
@@ -72,15 +67,29 @@
 
             _fakeFormatter.ToCollection(inputValue).ReturnsForAnyArgs(inputValues);
             _fakeFormatter.ToText(Arg.Do<IEnumerable<string>>(values => actualOutputValues = values)).ReturnsForAnyArgs(string.Empty);
-            var converter = Substitute.For<IUnitConverter>();
-            for (var i = 0; i < inputValues.Length; i++)
-            {
-                converter.Convert(inputValues[i].ToDouble()).Returns(result[i]);
-            }
+
+            var converter = ConfigureConverterFor(inputValues, result);
 
             _viewmodel.ConvertWith(converter, inputValue);
 
             actualOutputValues.ShouldBeEquivalentTo(expectedOutputValues);
+        }
+
+        private IUnitConverter ConfigureConverterFor(string[] input, double[] output)
+        {
+            var inputValues = input.Select(TestExtensions.ToDouble).ToArray();
+            return ConfigureConverterFor(inputValues, output);
+        }
+
+        private IUnitConverter ConfigureConverterFor(double[] input, double[] output)
+        {
+            var converter = Substitute.For<IUnitConverter>();
+            for (var i = 0; i < input.Length; i++)
+            {
+                converter.Convert(input[i]).Returns(output[i]);
+            }
+
+            return converter;
         }
     }
 }
